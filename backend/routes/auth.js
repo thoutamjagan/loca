@@ -38,11 +38,11 @@ module.exports = function() {
         });
     }
 
-    if (config.demomode) {
-        router.get('/signin', loginManager.loginDemo);
-    } else {
+   // if (config.demomode) {
+   //     router.get('/signin', loginManager.loginDemo);
+   // } else {
         router.post('/signin', loginManager.login);
-    }
+   // }
 
     router.all('/signedin', (req, res) => {
         // TODO remove harcoded page dashboard
