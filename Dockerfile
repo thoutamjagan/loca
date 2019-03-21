@@ -1,4 +1,4 @@
-FROM node:8 AS base
+FROM node:9 AS base
 RUN apt-get update
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 #RUN echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
@@ -17,7 +17,7 @@ RUN npm set progress=false && \
 COPY . .
 
 FROM base as dependencies
-RUN npm ci && \
+RUN npm install && \
     npm run buildprod && \
     NODE_ENV=production npm prune
 
